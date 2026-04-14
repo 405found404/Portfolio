@@ -1467,10 +1467,7 @@
                 </div>
             </div>
         </section>
-
     </main>
-
-    <!-- FOOTER -->
     <footer>
         <div class="footer-name">Pandi Selvam <span>M</span>.</div>
         <div class="footer-copy">© 2025 — AWS &amp; DevOps Freelancer</div>
@@ -1480,7 +1477,6 @@
             <a href="https://github.com/405found404/Devops-Projects" target="_blank">GitHub</a>
         </div>
     </footer>
-
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
@@ -1491,7 +1487,6 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1505,7 +1500,6 @@
             });
         }, { threshold: 0.3 });
         document.querySelectorAll('.skills-layout').forEach(el => skillObserver.observe(el));
-
         function handleSubmit(btn) {
             const form = btn.closest('.contact-form');
             const name = form.querySelector('input[type="text"]').value;
@@ -1519,16 +1513,38 @@
                 setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = 'var(--accent)'; }, 2000);
                 return;
             }
-
-            const subject = encodeURIComponent(`Freelance Inquiry: ${project || 'General'}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject: ${project}\n\nMessage:\n${message}`);
-            window.location.href = `mailto:pandiselvamm900@gmail.com?subject=${subject}&body=${body}`;
-
-            btn.textContent = 'Message Sent! ✓';
-            btn.style.background = '#cc0000';
-            setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = 'var(--accent)'; }, 3000);
+            btn.textContent = 'Sending...';
+            btn.style.background = '#d97706';
+            fetch("https://formsubmit.co/ajax/pandiselvamm900@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    project: project || 'General',
+                    message: message,
+                    _subject: `New Freelance Inquiry from ${name}`
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    btn.textContent = 'Message Sent! ✓';
+                    btn.style.background = '#cc0000';
+                    form.querySelector('input[type="text"]').value = '';
+                    form.querySelector('input[type="email"]').value = '';
+                    form.querySelector('select').value = '';
+                    form.querySelector('textarea').value = '';
+                    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = 'var(--accent)'; }, 3000);
+                })
+                .catch(error => {
+                    btn.textContent = 'Failed to Send';
+                    btn.style.background = '#ff0000';
+                    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = 'var(--accent)'; }, 3000);
+                });
         }
-
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', e => {
                 const target = document.querySelector(link.getAttribute('href'));
