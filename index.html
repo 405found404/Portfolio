@@ -691,6 +691,160 @@
             font-weight: 700;
         }
 
+        .testimonial-form {
+            background: var(--bg2);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text3);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.6rem;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .form-input,
+        textarea.form-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--bg3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus,
+        textarea.form-input:focus {
+            border-color: var(--accent);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.7;
+        }
+
+        .form-rating {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+
+        .star-input {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.15s ease;
+            color: rgba(255, 42, 42, 0.3);
+        }
+
+        .star-input:hover,
+        .star-input.active {
+            color: var(--accent);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 0.95rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: #ff4a4a;
+            transform: translateY(-1px);
+        }
+
+        #submittedTestimonials {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .submitted-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .submitted-card {
+            background: var(--bg2);
+            border: 1px solid rgba(255, 42, 42, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .submitted-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(255, 42, 42, 0.1);
+        }
+
+        .submitted-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .submitted-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .submitted-role {
+            font-size: 0.85rem;
+            color: var(--text2);
+            margin-top: 0.3rem;
+        }
+
+        .submitted-company {
+            font-size: 0.8rem;
+            color: var(--text3);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 0.2rem;
+        }
+
+        .submitted-rating {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .submitted-rating .star {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .submitted-message {
+            color: var(--text2);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(240px, 1fr));
@@ -1501,50 +1655,42 @@
                 <div class="rating-pill"><strong>0</strong> downtime launches</div>
             </div>
             <div class="testimonials-grid fade-in">
-                <div class="testimonial-card">
-                    <div class="testimonial-meta">
-                        <div class="testimonial-avatar">RK</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Rahul Kumar</div>
-                            <div class="testimonial-role">Founder, SaaS Growth Studio</div>
+                <div class="testimonial-form">
+                    <div style="text-align:center;margin-bottom:2rem;">
+                        <p style="color:var(--text2);font-size:0.95rem;line-height:1.7;">Share your experience working with me. Your feedback helps build trust with future clients.</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" id="testName" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Title / Role</label>
+                        <input type="text" class="form-input" id="testRole" placeholder="e.g., CTO, Product Manager">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company</label>
+                        <input type="text" class="form-input" id="testCompany" placeholder="Your company name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Rating</label>
+                        <div class="form-rating" id="ratingContainer">
+                            <span class="star-input" data-rating="1">★</span>
+                            <span class="star-input" data-rating="2">★</span>
+                            <span class="star-input" data-rating="3">★</span>
+                            <span class="star-input" data-rating="4">★</span>
+                            <span class="star-input" data-rating="5">★</span>
                         </div>
                     </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Transformed our AWS infrastructure with a secure, automated pipeline that saved time and costs."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-meta">
-                        <div class="testimonial-avatar">MP</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Meena Priya</div>
-                            <div class="testimonial-role">Product Manager, TechOps Co.</div>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Testimonial</label>
+                        <textarea class="form-input" id="testMessage" placeholder="Share your experience and what made working together great..."></textarea>
                     </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Fast delivery with rock-solid architecture. Our site now scales effortlessly."</p>
+                    <button class="form-submit" onclick="submitTestimonial()">Submit Testimonial →</button>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-meta">
-                        <div class="testimonial-avatar">AT</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Arun Thomas</div>
-                            <div class="testimonial-role">CTO, Retail Cloud Labs</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Critical infrastructure migration executed on schedule with zero downtime. Exceeded expectations."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-meta">
-                        <div class="testimonial-avatar">NS</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Neha Sharma</div>
-                            <div class="testimonial-role">Operations Lead, FinTech Systems</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"AWS expertise delivered repeatable, secure, and fully documented deployments."</p>
-                </div>
+            </div>
+            <div id="submittedTestimonials">
+                <div id="submittedMessage" style="text-align:center;color:var(--text2);font-size:0.95rem;">No testimonials yet. Be the first to share your experience!</div>
+                <div class="submitted-testimonials-grid" id="submittedGrid" style="display:none;"></div>
             </div>
         </section>
 
@@ -1780,6 +1926,104 @@
                 if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
+        loadSubmittedTestimonials();
+        let selectedRating = 0;
+        document.querySelectorAll('.star-input').forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-rating');
+                document.querySelectorAll('.star-input').forEach((s, idx) => {
+                    if (idx < selectedRating) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+            });
+        });
+        function loadSubmittedTestimonials() {
+            const stored = localStorage.getItem('testimonials');
+            const testimonials = stored ? JSON.parse(stored) : [];
+            const grid = document.getElementById('submittedGrid');
+            const message = document.getElementById('submittedMessage');
+            if (testimonials.length === 0) {
+                grid.style.display = 'none';
+                message.style.display = 'block';
+                return;
+            }
+            grid.innerHTML = '';
+            testimonials.forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'submitted-card fade-in';
+                const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+                card.innerHTML = `
+                    <div class="submitted-header">
+                        <div>
+                            <div class="submitted-name">${t.name}</div>
+                            <div class="submitted-role">${t.role}</div>
+                            <div class="submitted-company">${t.company}</div>
+                        </div>
+                        <div class="submitted-rating">${stars.split('').map(s => `<span class="star">${s}</span>`).join('')}</div>
+                    </div>
+                    <div class="submitted-message">${t.message}</div>
+                `;
+                grid.appendChild(card);
+            });
+            grid.style.display = 'grid';
+            message.style.display = 'none';
+        }
+        function submitTestimonial() {
+            const btn = document.querySelector('.form-submit');
+            const name = document.getElementById('testName').value;
+            const role = document.getElementById('testRole').value;
+            const company = document.getElementById('testCompany').value;
+            const message = document.getElementById('testMessage').value;
+            if (!name || !role || !company || !message || selectedRating === 0) {
+                btn.textContent = 'Please fill all fields and rate';
+                btn.style.background = '#ff0000';
+                setTimeout(() => { btn.textContent = 'Submit Testimonial →'; btn.style.background = 'var(--accent)'; }, 2000);
+                return;
+            }
+            btn.textContent = 'Submitting...';
+            btn.style.background = '#d97706';
+            const testimonial = {
+                name: name,
+                role: role,
+                company: company,
+                rating: parseInt(selectedRating),
+                message: message
+            };
+            const stored = localStorage.getItem('testimonials');
+            const testimonials = stored ? JSON.parse(stored) : [];
+            testimonials.unshift(testimonial);
+            localStorage.setItem('testimonials', JSON.stringify(testimonials));
+            fetch('https://formsubmit.co/ajax/pandiselvamm900@gmail.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    role: role,
+                    company: company,
+                    rating: selectedRating,
+                    testimonial: message,
+                    _subject: `New Testimonial from ${name} at ${company}`
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                btn.textContent = 'Testimonial Received! ✓';
+                btn.style.background = '#cc0000';
+                document.getElementById('testName').value = '';
+                document.getElementById('testRole').value = '';
+                document.getElementById('testCompany').value = '';
+                document.getElementById('testMessage').value = '';
+                document.querySelectorAll('.star-input').forEach(s => s.classList.remove('active'));
+                selectedRating = 0;
+                loadSubmittedTestimonials();
+                setTimeout(() => { btn.textContent = 'Submit Testimonial →'; btn.style.background = 'var(--accent)'; }, 3000);
+            })
+            .catch(error => {
+                btn.textContent = 'Failed to Submit';
+                btn.style.background = '#ff0000';
+                setTimeout(() => { btn.textContent = 'Submit Testimonial →'; btn.style.background = 'var(--accent)'; }, 3000);
+            });
+        }
     </script>
 </body>
 
