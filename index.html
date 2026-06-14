@@ -696,7 +696,9 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 18px;
             padding: 2rem;
-            max-width: 600px;
+            width: 100%;
+            max-width: 720px;
+            box-sizing: border-box;
             margin: 0 auto;
         }
 
@@ -717,25 +719,27 @@
         .form-input,
         textarea.form-input {
             width: 100%;
-            padding: 0.85rem 1rem;
+            padding: 0.95rem 1rem;
             background: var(--bg3);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--text);
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.2s ease, background 0.2s ease;
         }
 
         .form-input:focus,
         textarea.form-input:focus {
             border-color: var(--accent);
+            background: rgba(255, 42, 42, 0.05);
         }
 
         textarea.form-input {
             resize: vertical;
-            min-height: 120px;
+            min-height: 160px;
+            max-height: 260px;
             line-height: 1.7;
         }
 
@@ -847,7 +851,7 @@
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(240px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1.25rem;
         }
 
